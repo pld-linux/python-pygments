@@ -2,13 +2,13 @@
 %define module pygments
 Summary:	Generic syntax highlighter
 Name:		python-%{module}
-Version:	0.11.1
+Version:	1.0
 Release:	1
 License:	BSD
 Group:		Development/Languages/Python
 Source0:	http://pypi.python.org/packages/source/P/Pygments/Pygments-%{version}.tar.gz
-# Source0-md5:	a7dc555f316437ba5241855ac306209a
-URL:		http://jinja.pocoo.org/1/
+# Source0-md5:	70c40ff5331460cabfcb24f86a8d451d
+URL:		http://pygments.org/
 BuildRequires:	python-devel
 %pyrequires_eq	python-modules
 BuildArch:	noarch
