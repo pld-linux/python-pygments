@@ -5,7 +5,7 @@
 Summary:	Generic syntax highlighter
 Name:		python-%{module}
 Version:	1.3.1
-Release:	1
+Release:	2
 License:	BSD
 Group:		Development/Languages/Python
 Source0:	http://pypi.python.org/packages/source/P/Pygments/Pygments-%{version}.tar.gz
