@@ -11,14 +11,18 @@ Group:		Development/Languages/Python
 Source0:	http://pypi.python.org/packages/source/P/Pygments/Pygments-%{version}.tar.gz
 # Source0-md5:	54be67c04834f13d7e255e1797d629a5
 URL:		http://pygments.org/
+%if %{with python2}
 BuildRequires:	python
 BuildRequires:	python-devel
 BuildRequires:	python-modules
+%endif
+%if %{with python3}
 BuildRequires:	python3
 BuildRequires:	python3-2to3
 BuildRequires:	python3-devel
 BuildRequires:	python3-distribute
 BuildRequires:	python3-modules
+%endif
 BuildRequires:	rpm-pythonprov
 %pyrequires_eq	python-modules
 BuildArch:	noarch
