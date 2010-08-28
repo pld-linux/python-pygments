@@ -111,7 +111,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/pygmentize
 %attr(755,root,root) %{_bindir}/pygmentize-2
 %{py_sitescriptdir}/%{module}
-%{py_sitescriptdir}/*Pygments*.egg*
 %endif
 
 %if %{with python3}
@@ -120,5 +119,4 @@ rm -rf $RPM_BUILD_ROOT
 %doc PKG-INFO TODO AUTHORS
 %attr(755,root,root) %{_bindir}/pygmentize-3
 %{py3_sitescriptdir}/%{module}
-%{py3_sitescriptdir}/*Pygments*.egg*
 %endif
