@@ -4,12 +4,12 @@
 #
 Summary:	Generic syntax highlighter
 Name:		python-%{module}
-Version:	1.3.1
-Release:	3
+Version:	1.4
+Release:	1
 License:	BSD
 Group:		Development/Languages/Python
 Source0:	http://pypi.python.org/packages/source/P/Pygments/Pygments-%{version}.tar.gz
-# Source0-md5:	54be67c04834f13d7e255e1797d629a5
+# Source0-md5:	d77ac8c93a7fb27545f2522abe9cc462
 URL:		http://pygments.org/
 %if %{with python2}
 BuildRequires:	python
