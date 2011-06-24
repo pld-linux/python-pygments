@@ -25,6 +25,7 @@ BuildRequires:	python3-modules
 %endif
 BuildRequires:	rpm-pythonprov
 %pyrequires_eq	python-modules
+Provides:	python-Pygments
 Obsoletes:	python-Pygments
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
