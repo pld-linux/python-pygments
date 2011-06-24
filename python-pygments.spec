@@ -2,7 +2,7 @@
 %bcond_without	python3
 %define module	pygments
 #
-Summary:	Generic syntax highlighter
+Summary:	A generic syntax highlighter
 Name:		python-%{module}
 Version:	1.4
 Release:	1
@@ -25,6 +25,7 @@ BuildRequires:	python3-modules
 %endif
 BuildRequires:	rpm-pythonprov
 %pyrequires_eq	python-modules
+Obsoletes:	python-Pygments
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -84,6 +85,9 @@ rm -rf $RPM_BUILD_ROOT
 
 mv $RPM_BUILD_ROOT%{_bindir}/pygmentize{,-2}
 
+%py_ocomp $RPM_BUILD_ROOT%{py_sitedir}
+%py_comp $RPM_BUILD_ROOT%{py_sitedir}
+
 %py_postclean
 %endif
 
@@ -111,7 +115,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/pygmentize
 %attr(755,root,root) %{_bindir}/pygmentize-2
 %{py_sitescriptdir}/%{module}
+%if "%{py_ver}" > "2.4"
 %{py_sitescriptdir}/*.egg-info
+%endif
 %endif
 
 %if %{with python3}
