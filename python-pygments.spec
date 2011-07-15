@@ -5,7 +5,7 @@
 Summary:	A generic syntax highlighter
 Name:		python-%{module}
 Version:	1.4
-Release:	1
+Release:	2
 License:	BSD
 Group:		Development/Languages/Python
 Source0:	http://pypi.python.org/packages/source/P/Pygments/Pygments-%{version}.tar.gz
@@ -100,8 +100,6 @@ mv $RPM_BUILD_ROOT%{_bindir}/pygmentize{,-2}
 	--root=$RPM_BUILD_ROOT
 
 mv $RPM_BUILD_ROOT%{_bindir}/pygmentize{,-3}
-
-%py3_postclean
 %endif
 
 ln -s pygmentize-2 $RPM_BUILD_ROOT%{_bindir}/pygmentize
