@@ -2,13 +2,13 @@
 # Conditional build:
 %bcond_without	python2	# CPython 2.x module
 %bcond_without	python3	# CPython 3.x module
-#
+
 %define module	pygments
 Summary:	A generic syntax highlighter as Python 2.x module
 Summary(pl.UTF-8):	Moduł Pythona 2.x do ogólnego podświetlania składni
 Name:		python-%{module}
 Version:	1.5
-Release:	2
+Release:	3
 License:	BSD
 Group:		Development/Languages/Python
 Source0:	http://pypi.python.org/packages/source/P/Pygments/Pygments-%{version}.tar.gz
