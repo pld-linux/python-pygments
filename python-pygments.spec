@@ -8,7 +8,7 @@ Summary:	A generic syntax highlighter as Python 2.x module
 Summary(pl.UTF-8):	Moduł Pythona 2.x do ogólnego podświetlania składni
 Name:		python-%{module}
 Version:	1.6
-Release:	2
+Release:	3
 License:	BSD
 Group:		Development/Languages/Python
 Source0:	http://pypi.python.org/packages/source/P/Pygments/Pygments-%{version}.tar.gz
@@ -27,8 +27,9 @@ BuildRequires:	python3-distribute
 BuildRequires:	python3-modules
 %endif
 BuildRequires:	rpm-pythonprov
-%pyrequires_eq	python-modules
-Provides:	python-Pygments
+Requires:	python-distribute
+Requires:	python-modules
+Provides:	python-Pygments = %{version}-%{release}
 Obsoletes:	python-Pygments
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -67,6 +68,7 @@ forów, wiki i inne plikacje wymagające ładnego wyświetlania kodu
 Summary:	Generic syntax highlighter as Python 3.x module
 Summary(pl.UTF-8):	Moduł Pythona 3.x do ogólnego podświetlania składni
 Group:		Development/Languages/Python
+Requires:	python3-distribute
 Requires:	python3-modules
 
 %description -n python3-%{module}
