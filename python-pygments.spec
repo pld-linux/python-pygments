@@ -8,7 +8,7 @@ Summary:	A generic syntax highlighter as Python 2.x module
 Summary(pl.UTF-8):	Moduł Pythona 2.x do ogólnego podświetlania składni
 Name:		python-%{module}
 Version:	1.6
-Release:	5
+Release:	6
 License:	BSD
 Group:		Development/Languages/Python
 Source0:	http://pypi.python.org/packages/source/P/Pygments/Pygments-%{version}.tar.gz
@@ -18,18 +18,18 @@ URL:		http://pygments.org/
 BuildRequires:	python
 BuildRequires:	python-devel
 BuildRequires:	python-modules
-BuildRequires:	python-setuptools > 7.0
+BuildRequires:	python-setuptools
 %endif
 %if %{with python3}
 BuildRequires:	python3
 BuildRequires:	python3-2to3
 BuildRequires:	python3-devel
-BuildRequires:	python3-setuptools > 7.0
 BuildRequires:	python3-modules
+BuildRequires:	python3-setuptools
 %endif
 BuildRequires:	rpm-pythonprov
-Requires:	python-setuptools > 7.0
 Requires:	python-modules
+Requires:	python-setuptools
 Provides:	python-Pygments = %{version}-%{release}
 Obsoletes:	python-Pygments
 BuildArch:	noarch
@@ -69,8 +69,8 @@ forów, wiki i inne plikacje wymagające ładnego wyświetlania kodu
 Summary:	Generic syntax highlighter as Python 3.x module
 Summary(pl.UTF-8):	Moduł Pythona 3.x do ogólnego podświetlania składni
 Group:		Development/Languages/Python
-Requires:	python3-setuptools > 7.0
 Requires:	python3-modules
+Requires:	python3-setuptools
 
 %description -n python3-%{module}
 Pygments is a generic syntax highlighter for general use in all kinds
