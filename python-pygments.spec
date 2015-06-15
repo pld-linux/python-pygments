@@ -16,7 +16,7 @@ Source0:	http://pypi.python.org/packages/source/P/Pygments/Pygments-%{version}.t
 URL:		http://pygments.org/
 %if %{with python2}
 BuildRequires:	python
-BuildRequires:	python-devel
+BuildRequires:	python-devel >= 1:2.6
 BuildRequires:	python-modules
 BuildRequires:	python-setuptools
 %endif
