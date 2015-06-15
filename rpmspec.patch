@@ -1,0 +1,12 @@
+--- Pygments-2.0.2/pygments/lexers/installers.py~	2014-11-10 21:17:51.000000000 +0200
++++ Pygments-2.0.2/pygments/lexers/installers.py	2015-06-15 14:57:19.665609691 +0300
+@@ -201,7 +201,8 @@
+             (r'.', Text),
+         ],
+         'macro': [
+-            (r'%define.*\n', Comment.Preproc),
++            (r'%(?:un)?define.*\n', Comment.Preproc),
++            (r'%include.*\n', Comment.Preproc),
+             (r'%\{\!\?.*%define.*\}', Comment.Preproc),
+             (r'(%(?:if(?:n?arch)?|else(?:if)?|endif))(.*)$',
+              bygroups(Comment.Preproc, Text)),
