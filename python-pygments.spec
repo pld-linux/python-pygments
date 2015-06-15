@@ -7,12 +7,12 @@
 Summary:	A generic syntax highlighter as Python 2.x module
 Summary(pl.UTF-8):	Moduł Pythona 2.x do ogólnego podświetlania składni
 Name:		python-%{module}
-Version:	1.6
-Release:	6
+Version:	2.0.2
+Release:	1
 License:	BSD
 Group:		Development/Languages/Python
 Source0:	http://pypi.python.org/packages/source/P/Pygments/Pygments-%{version}.tar.gz
-# Source0-md5:	a18feedf6ffd0b0cc8c8b0fbdb2027b1
+# Source0-md5:	238587a1370d62405edabd0794b3ec4a
 URL:		http://pygments.org/
 %if %{with python2}
 BuildRequires:	python
