@@ -11,6 +11,7 @@ Version:	2.0.2
 Release:	2
 License:	BSD
 Group:		Development/Languages/Python
+#Source0Download: https://pypi.python.org/pypi/Pygments
 Source0:	http://pypi.python.org/packages/source/P/Pygments/Pygments-%{version}.tar.gz
 # Source0-md5:	238587a1370d62405edabd0794b3ec4a
 Patch0:		rpmspec.patch
