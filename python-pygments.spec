@@ -110,22 +110,18 @@ forów, wiki i inne plikacje wymagające ładnego wyświetlania kodu
 
 %build
 %if %{with python2}
-%{__python} setup.py build -b build-2
+%py_build
 %endif
 
 %if %{with python3}
-%{__python3} setup.py build -b build-3
+%py3_build
 %endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
 %if %{with python2}
-%{__python} setup.py \
-	build -b build-2 \
-	install \
-	--optimize=2 \
-	--root=$RPM_BUILD_ROOT
+%py_install
 
 mv $RPM_BUILD_ROOT%{_bindir}/pygmentize{,-2}
 
@@ -135,11 +131,7 @@ mv $RPM_BUILD_ROOT%{_bindir}/pygmentize{,-2}
 %endif
 
 %if %{with python3}
-%{__python3} setup.py \
-	build -b build-3 \
-	install \
-	--optimize=2 \
-	--root=$RPM_BUILD_ROOT
+%py3_install
 
 mv $RPM_BUILD_ROOT%{_bindir}/pygmentize{,-3}
 %endif
