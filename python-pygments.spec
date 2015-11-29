@@ -16,6 +16,7 @@ Source0:	http://pypi.python.org/packages/source/P/Pygments/Pygments-%{version}.t
 # Source0-md5:	238587a1370d62405edabd0794b3ec4a
 Patch0:		rpmspec.patch
 URL:		http://pygments.org/
+BuildRequires:	rpmbuild(macros) >= 1.710
 %if %{with python2}
 BuildRequires:	python
 BuildRequires:	python-devel >= 1:2.6
