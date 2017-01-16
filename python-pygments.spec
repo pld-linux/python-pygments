@@ -7,31 +7,31 @@
 Summary:	A generic syntax highlighter as Python 2.x module
 Summary(pl.UTF-8):	Moduł Pythona 2.x do ogólnego podświetlania składni
 Name:		python-%{module}
-Version:	2.0.2
-Release:	6
+Version:	2.1.3
+Release:	1
 License:	BSD
 Group:		Development/Languages/Python
-#Source0Download: https://pypi.python.org/pypi/Pygments
-Source0:	http://pypi.python.org/packages/source/P/Pygments/Pygments-%{version}.tar.gz
-# Source0-md5:	238587a1370d62405edabd0794b3ec4a
+#Source0Download: https://pypi.python.org/simple/Pygments
+Source0:	https://pypi.python.org/packages/source/P/Pygments/Pygments-%{version}.tar.gz
+# Source0-md5:	ed3fba2467c8afcda4d317e4ef2c6150
 Patch0:		rpmspec.patch
 URL:		http://pygments.org/
-BuildRequires:	rpmbuild(macros) >= 1.710
+BuildRequires:	rpmbuild(macros) >= 1.714
 %if %{with python2}
-BuildRequires:	python
+BuildRequires:	python >= 1:2.6
 BuildRequires:	python-devel >= 1:2.6
-BuildRequires:	python-modules
+BuildRequires:	python-modules >= 1:2.6
 BuildRequires:	python-setuptools
 %endif
 %if %{with python3}
-BuildRequires:	python3
-BuildRequires:	python3-2to3
-BuildRequires:	python3-devel
-BuildRequires:	python3-modules
+BuildRequires:	python3 >= 1:3.2
+BuildRequires:	python3-2to3 >= 1:3.2
+BuildRequires:	python3-devel >= 1:3.2
+BuildRequires:	python3-modules >= 1:3.2
 BuildRequires:	python3-setuptools
 %endif
 BuildRequires:	rpm-pythonprov
-Requires:	python-modules
+Requires:	python-modules >= 1:2.6
 Requires:	python-setuptools
 Provides:	python-Pygments = %{version}-%{release}
 Obsoletes:	python-Pygments
@@ -72,7 +72,7 @@ forów, wiki i inne plikacje wymagające ładnego wyświetlania kodu
 Summary:	Generic syntax highlighter as Python 3.x module
 Summary(pl.UTF-8):	Moduł Pythona 3.x do ogólnego podświetlania składni
 Group:		Development/Languages/Python
-Requires:	python3-modules
+Requires:	python3-modules >= 1:3.2
 Requires:	python3-setuptools
 
 %description -n python3-%{module}
@@ -124,17 +124,15 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with python2}
 %py_install
 
-mv $RPM_BUILD_ROOT%{_bindir}/pygmentize{,-2}
+%{__mv} $RPM_BUILD_ROOT%{_bindir}/pygmentize{,-2}
 
-%py_ocomp $RPM_BUILD_ROOT%{py_sitedir}
-%py_comp $RPM_BUILD_ROOT%{py_sitedir}
 %py_postclean
 %endif
 
 %if %{with python3}
 %py3_install
 
-mv $RPM_BUILD_ROOT%{_bindir}/pygmentize{,-3}
+%{__mv} $RPM_BUILD_ROOT%{_bindir}/pygmentize{,-3}
 %endif
 
 %if %{with python2}
