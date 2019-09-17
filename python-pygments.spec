@@ -9,33 +9,37 @@
 Summary:	A generic syntax highlighter as Python 2.x module
 Summary(pl.UTF-8):	Moduł Pythona 2.x do ogólnego podświetlania składni
 Name:		python-%{module}
-Version:	2.2.0
-Release:	3
+Version:	2.4.2
+Release:	1
 License:	BSD
 Group:		Development/Languages/Python
 #Source0Download: https://pypi.org/simple/Pygments/
 Source0:	https://files.pythonhosted.org/packages/source/P/Pygments/Pygments-%{version}.tar.gz
-# Source0-md5:	13037baca42f16917cbd5ad2fab50844
+# Source0-md5:	5ecc3fbb2a783e917b369271fc0e6cd1
 Patch0:		rpmspec.patch
-Patch1:		%{name}-py3.7.patch
 URL:		http://pygments.org/
 BuildRequires:	rpmbuild(macros) >= 1.714
 %if %{with python2}
-BuildRequires:	python >= 1:2.6
-BuildRequires:	python-devel >= 1:2.6
-BuildRequires:	python-modules >= 1:2.6
+BuildRequires:	python >= 1:2.7
+BuildRequires:	python-devel >= 1:2.7
+BuildRequires:	python-modules >= 1:2.7
 BuildRequires:	python-setuptools
+%if %{with tests}
+BuildRequires:	python-nose
+%endif
 %endif
 %if %{with python3}
-BuildRequires:	python3 >= 1:3.2
-BuildRequires:	python3-2to3 >= 1:3.2
-BuildRequires:	python3-devel >= 1:3.2
-BuildRequires:	python3-modules >= 1:3.2
+BuildRequires:	python3 >= 1:3.5
+BuildRequires:	python3-devel >= 1:3.5
+BuildRequires:	python3-modules >= 1:3.5
 BuildRequires:	python3-setuptools
+%if %{with tests}
+BuildRequires:	python3-nose
+%endif
 %endif
 BuildRequires:	rpm-pythonprov
 %{?with_doc:BuildRequires:	sphinx-pdg}
-Requires:	python-modules >= 1:2.6
+Requires:	python-modules >= 1:2.7
 Requires:	python-setuptools
 Provides:	python-Pygments = %{version}-%{release}
 Obsoletes:	python-Pygments
@@ -76,7 +80,7 @@ forów, wiki i inne plikacje wymagające ładnego wyświetlania kodu
 Summary:	Generic syntax highlighter as Python 3.x module
 Summary(pl.UTF-8):	Moduł Pythona 3.x do ogólnego podświetlania składni
 Group:		Development/Languages/Python
-Requires:	python3-modules >= 1:3.2
+Requires:	python3-modules >= 1:3.5
 Requires:	python3-setuptools
 
 %description -n python3-%{module}
@@ -123,7 +127,6 @@ Dokumentacja API modułu Pythona Pygments.
 %prep
 %setup -q -n Pygments-%{version}
 %patch0 -p1
-%patch1 -p1
 
 %build
 %if %{with python2}
