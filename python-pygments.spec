@@ -9,13 +9,13 @@
 Summary:	A generic syntax highlighter as Python 2.x module
 Summary(pl.UTF-8):	Moduł Pythona 2.x do ogólnego podświetlania składni
 Name:		python-%{module}
-Version:	2.4.2
-Release:	2
+Version:	2.5.2
+Release:	1
 License:	BSD
 Group:		Development/Languages/Python
-#Source0Download: https://pypi.org/simple/Pygments/
+#Source0Download: https://pypi.org/simple/pygments/
 Source0:	https://files.pythonhosted.org/packages/source/P/Pygments/Pygments-%{version}.tar.gz
-# Source0-md5:	5ecc3fbb2a783e917b369271fc0e6cd1
+# Source0-md5:	465a35559863089d959d783a69f79b9f
 Patch0:		rpmspec.patch
 URL:		http://pygments.org/
 BuildRequires:	rpmbuild(macros) >= 1.714
@@ -25,7 +25,7 @@ BuildRequires:	python-devel >= 1:2.7
 BuildRequires:	python-modules >= 1:2.7
 BuildRequires:	python-setuptools
 %if %{with tests}
-BuildRequires:	python-nose
+BuildRequires:	python-pytest
 %endif
 %endif
 %if %{with python3}
@@ -34,7 +34,7 @@ BuildRequires:	python3-devel >= 1:3.5
 BuildRequires:	python3-modules >= 1:3.5
 BuildRequires:	python3-setuptools
 %if %{with tests}
-BuildRequires:	python3-nose
+BuildRequires:	python3-pytest
 %endif
 %endif
 BuildRequires:	rpm-pythonprov
@@ -133,7 +133,7 @@ Dokumentacja API modułu Pythona Pygments.
 %py_build
 
 %if %{with tests}
-%{__python} tests/run.py
+%{__python} -m pytest tests
 %endif
 %endif
 
@@ -141,7 +141,7 @@ Dokumentacja API modułu Pythona Pygments.
 %py3_build
 
 %if %{with tests}
-%{__python3} tests/run.py
+%{__python3} -m pytest tests
 %endif
 %endif
 
@@ -167,8 +167,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__mv} $RPM_BUILD_ROOT%{_bindir}/pygmentize{,-3}
 %endif
 
-%if %{with python2}
-ln -sf pygmentize-2 $RPM_BUILD_ROOT%{_bindir}/pygmentize
+%if %{with python3}
+ln -sf pygmentize-3 $RPM_BUILD_ROOT%{_bindir}/pygmentize
 %endif
 
 %clean
@@ -177,8 +177,7 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with python2}
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS CHANGES LICENSE README.rst TODO
-%attr(755,root,root) %{_bindir}/pygmentize
+%doc AUTHORS CHANGES LICENSE README.rst
 %attr(755,root,root) %{_bindir}/pygmentize-2
 %{py_sitescriptdir}/%{module}
 %{py_sitescriptdir}/Pygments-%{version}-py*.egg-info
@@ -187,7 +186,8 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with python3}
 %files -n python3-%{module}
 %defattr(644,root,root,755)
-%doc AUTHORS CHANGES LICENSE README.rst TODO
+%doc AUTHORS CHANGES LICENSE README.rst
+%attr(755,root,root) %{_bindir}/pygmentize
 %attr(755,root,root) %{_bindir}/pygmentize-3
 %{py3_sitescriptdir}/%{module}
 %{py3_sitescriptdir}/Pygments-%{version}-py*.egg-info
