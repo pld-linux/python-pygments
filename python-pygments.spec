@@ -82,6 +82,7 @@ Summary(pl.UTF-8):	Moduł Pythona 3.x do ogólnego podświetlania składni
 Group:		Development/Languages/Python
 Requires:	python3-modules >= 1:3.5
 Requires:	python3-setuptools
+Conflicts:	python-pygments < 2.5.2
 
 %description -n python3-%{module}
 Pygments is a generic syntax highlighter for general use in all kinds
