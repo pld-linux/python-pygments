@@ -1,7 +1,7 @@
 #
 # Conditional build:
 %bcond_without	python2	# CPython 2.x module
-%bcond_without	python3	# CPython 3.x module
+%bcond_with	python3	# CPython 3.x module (built from python3-pygments.spec)
 %bcond_without	doc	# Sphinx documentation
 %bcond_without	tests	# unit tests
 
@@ -17,7 +17,7 @@ Group:		Development/Languages/Python
 Source0:	https://files.pythonhosted.org/packages/source/P/Pygments/Pygments-%{version}.tar.gz
 # Source0-md5:	465a35559863089d959d783a69f79b9f
 Patch0:		rpmspec.patch
-URL:		http://pygments.org/
+URL:		https://pygments.org/
 BuildRequires:	rpmbuild(macros) >= 1.714
 %if %{with python2}
 BuildRequires:	python >= 1:2.7
@@ -38,11 +38,11 @@ BuildRequires:	python3-pytest
 %endif
 %endif
 BuildRequires:	rpm-pythonprov
-%{?with_doc:BuildRequires:	sphinx-pdg}
+%{?with_doc:BuildRequires:	sphinx-pdg-2}
 Requires:	python-modules >= 1:2.7
 Requires:	python-setuptools
 Provides:	python-Pygments = %{version}-%{release}
-Obsoletes:	python-Pygments
+Obsoletes:	python-Pygments < 1.5
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -148,7 +148,8 @@ Dokumentacja API modułu Pythona Pygments.
 
 %if %{with doc}
 PYTHONPATH=$(pwd) \
-%{__make} -C doc html
+%{__make} -C doc html \
+	SPHINXBUILD=sphinx-build-2
 %endif
 
 %install
