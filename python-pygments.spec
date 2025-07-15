@@ -127,7 +127,7 @@ Dokumentacja API modułu Pythona Pygments.
 
 %prep
 %setup -q -n Pygments-%{version}
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 %if %{with python2}
